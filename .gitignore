@@ -48,15 +48,4 @@ next-env.d.ts
 .project
 .settings/
 
-# Local Project Docs
-ARCHITECTURE.md
-DEVLOG.md
-REFLECTION.md
-TESTS.md
-PRICING_DATA.md
-PROMPTS.md
-GTM.md
-ECONOMICS.md
-USER_INTERVIEWS.md
-LANDING_COPY.md
-METRICS.md
+
