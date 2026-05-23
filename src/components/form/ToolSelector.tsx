@@ -53,7 +53,7 @@ export default function ToolSelector({ selectedToolIds, onAdd }: ToolSelectorPro
       {open && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute top-full left-0 right-0 mt-2 z-20 glass-card rounded-2xl p-3 border border-indigo-500/20 shadow-2xl shadow-black/40">
+          <div className="absolute top-full left-0 right-0 mt-2 z-20 bg-slate-900 rounded-2xl p-3 border border-indigo-500/20 shadow-2xl shadow-black/40">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Select a tool to add

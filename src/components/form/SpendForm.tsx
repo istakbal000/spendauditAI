@@ -131,7 +131,7 @@ export default function SpendForm() {
       </div>
 
       {/* Section 1: Tools */}
-      <section className="mb-8">
+      <section className="mb-8 relative z-30">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wider">
             Your AI Tools
