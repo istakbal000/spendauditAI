@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Bot, Zap } from 'lucide-react';
 import RecommendationCard from '@/components/results/RecommendationCard';
 import SavingsHero from '@/components/results/SavingsHero';
-import { formatCurrency, cn } from '@/lib/utils';
+import { formatCurrency, cn, getBaseUrl } from '@/lib/utils';
 import type { AuditRecord, AuditResult } from '@/types';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 
 async function getAudit(id: string): Promise<AuditRecord | null> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const baseUrl = getBaseUrl();
     const res = await fetch(`${baseUrl}/api/audit?id=${id}`, {
       next: { revalidate: 3600 },
     });

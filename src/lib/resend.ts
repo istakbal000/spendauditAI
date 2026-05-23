@@ -1,14 +1,10 @@
 import { Resend } from 'resend';
 import type { AuditResult } from '@/types';
 
+import { getBaseUrl } from './utils';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'audit@aispendaudit.com';
-
-if (process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_APP_URL) {
-  console.warn('WARNING: NEXT_PUBLIC_APP_URL is not set in production. Email links will default to localhost:3000.');
-}
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 export async function sendAuditConfirmationEmail({
   to,
@@ -21,7 +17,7 @@ export async function sendAuditConfirmationEmail({
   result: AuditResult;
   company?: string;
 }) {
-  const shareUrl = `${APP_URL}/audit/${auditId}`;
+  const shareUrl = `${getBaseUrl()}/audit/${auditId}`;
   const isHighSavings = result.monthlySavings > 500;
 
   const recsList = result.recommendations

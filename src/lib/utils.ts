@@ -18,14 +18,16 @@ export function formatNumber(n: number): string {
   return new Intl.NumberFormat('en-US').format(n);
 }
 
+export function getBaseUrl(): string {
+  if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (typeof window !== 'undefined' && window.location.origin) return window.location.origin;
+  return 'http://localhost:3000';
+}
+
 export function getShareUrl(auditId: string): string {
-  if (process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_APP_URL && typeof window === 'undefined') {
-    console.warn('WARNING: NEXT_PUBLIC_APP_URL is not set during SSR in production. Share URLs will default to localhost:3000.');
-  }
-  const base =
-    process.env.NEXT_PUBLIC_APP_URL ||
-    (typeof window !== 'undefined' && window.location.origin ? window.location.origin : 'http://localhost:3000');
-  return `${base}/audit/${auditId}`;
+  return `${getBaseUrl()}/audit/${auditId}`;
 }
 
 export function getSavingsColor(monthlySavings: number): string {
