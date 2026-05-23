@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Spend Audit
 
-## Getting Started
+> Audit your startup's AI tool stack in 60 seconds. Get personalized savings recommendations — no login required.
 
-First, run the development server:
+[![CI](https://github.com/istakbal000/ai-spend-audit/actions/workflows/ci.yml/badge.svg)](https://github.com/istakbal000/ai-spend-audit/actions)
+
+---
+
+## 🚀 What is this?
+
+AI Spend Audit is a B2B SaaS tool for startups and engineering teams that want to stop overpaying for AI subscriptions. Users input their current AI tools, plans, and seats — the engine identifies savings opportunities through downgrade suggestions, redundancy detection, and plan optimization.
+
+**No login. No credit card. Instant results.**
+
+---
+
+## ✨ Features
+
+- 🔍 **Instant Stack Analysis** — audit 8 major AI platforms in seconds
+- 💰 **Savings Detection** — downgrade suggestions, consolidation alerts, overlap detection
+- 🤖 **AI Summary** — Gemini-powered personalized audit narrative
+- 🔗 **Shareable Reports** — UUID-based public links, SEO-optimized
+- 📧 **Lead Capture** — email capture post-value, not pre-value
+- 📊 **Visual Dashboard** — before/after charts, spend breakdown
+- 📬 **Transactional Emails** — via Resend
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v4 |
+| Database | Supabase (PostgreSQL) |
+| AI | Google Gemini 1.5 Flash |
+| Email | Resend |
+| Forms | React Hook Form + Zod |
+| Charts | Recharts |
+| Testing | Vitest |
+| CI/CD | GitHub Actions |
+| Deploy | Vercel |
+
+---
+
+## 🏃 Getting Started
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/istakbal000/ai-spend-audit
+cd ai-spend-audit
+npm install
+```
+
+### 2. Configure Environment
+
+```bash
+cp .env.example .env.local
+# Fill in your Supabase, Gemini, and Resend keys
+```
+
+### 3. Set Up Database
+
+Run the SQL in `supabase/migrations/001_initial.sql` in your Supabase SQL editor.
+
+### 4. Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Opens at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm test           # Run all tests
+npm run test:watch # Watch mode
+npm run type-check # TypeScript check
+npm run lint       # ESLint
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Deploy to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push to GitHub
+2. Import project in [Vercel](https://vercel.com/new)
+3. Add environment variables from `.env.example`
+4. Deploy!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See `ARCHITECTURE.md` for full system design.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/                 # Next.js App Router pages
+  api/               # API routes (summary, audit)
+  audit/             # Audit form + public [id] pages
+  results/           # Results dashboard
+src/
+  components/        # React components
+    landing/         # Landing page sections
+    form/            # Spend input form
+    results/         # Results dashboard
+  data/              # pricing.ts — hardcoded AI tool pricing
+  engine/            # audit.ts — deterministic rules engine
+  lib/               # supabase, gemini, resend, utils
+  tests/             # Vitest test suite
+  types/             # TypeScript definitions
+supabase/
+  migrations/        # SQL schema files
+.github/workflows/   # CI/CD
+```
+
+---
+
+## 📄 License
+
+MIT
