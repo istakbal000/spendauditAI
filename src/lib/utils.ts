@@ -23,7 +23,7 @@ export function getBaseUrl(): string {
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   if (typeof window !== 'undefined' && window.location.origin) return window.location.origin;
-  return 'http://localhost:3000';
+  return 'https://spendaudit-ai.vercel.app';
 }
 
 export function getShareUrl(auditId: string): string {
